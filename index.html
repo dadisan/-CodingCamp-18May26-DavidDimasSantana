@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Tab Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header__left">
+      <span id="greeting-text" class="greeting-text"></span>
+      <span id="greeting-name" class="greeting-name"></span>
+    </div>
+    <div class="header__right">
+      <div id="clock" class="clock"></div>
+      <div id="date-display" class="date-display"></div>
+    </div>
+    <button id="theme-toggle" class="btn btn--icon" aria-label="Toggle theme" title="Toggle Light/Dark mode">
+      <span id="theme-icon">☀️</span>
+    </button>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+
+    <!-- === FOCUS TIMER === -->
+    <section class="card timer-card" aria-label="Focus Timer">
+      <h2 class="card__title">Focus Timer</h2>
+
+      <div class="timer__display" id="timer-display">25:00</div>
+
+      <div class="timer__controls">
+        <button id="timer-start" class="btn btn--primary">Start</button>
+        <button id="timer-stop" class="btn btn--secondary">Stop</button>
+        <button id="timer-reset" class="btn btn--ghost">Reset</button>
+      </div>
+
+      <div class="timer__settings">
+        <label for="timer-duration" class="timer__label">Duration (min):</label>
+        <input
+          type="number"
+          id="timer-duration"
+          class="input input--small"
+          min="1"
+          max="120"
+          value="25"
+          aria-label="Set timer duration in minutes"
+        />
+        <button id="timer-set" class="btn btn--ghost btn--small">Set</button>
+      </div>
+    </section>
+
+    <!-- === TO-DO LIST === -->
+    <section class="card todo-card" aria-label="To-Do List">
+      <h2 class="card__title">To-Do List</h2>
+
+      <div class="todo__input-row">
+        <input
+          type="text"
+          id="todo-input"
+          class="input"
+          placeholder="Add a new task…"
+          aria-label="New task"
+          maxlength="120"
+        />
+        <button id="todo-add" class="btn btn--primary">Add</button>
+      </div>
+
+      <div class="todo__filters">
+        <button class="btn btn--filter active" data-filter="all">All</button>
+        <button class="btn btn--filter" data-filter="active">Active</button>
+        <button class="btn btn--filter" data-filter="done">Done</button>
+        <button id="todo-sort" class="btn btn--ghost btn--small sort-btn" title="Sort A→Z / Z→A">⇅ Sort</button>
+      </div>
+
+      <ul id="todo-list" class="todo__list" aria-label="Task list"></ul>
+
+      <p id="todo-empty" class="todo__empty">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- === QUICK LINKS === -->
+    <section class="card links-card" aria-label="Quick Links">
+      <h2 class="card__title">Quick Links</h2>
+
+      <div class="links__input-row">
+        <input
+          type="text"
+          id="link-name"
+          class="input"
+          placeholder="Label"
+          aria-label="Link label"
+          maxlength="30"
+        />
+        <input
+          type="url"
+          id="link-url"
+          class="input"
+          placeholder="https://…"
+          aria-label="Link URL"
+        />
+        <button id="link-add" class="btn btn--primary">Add</button>
+      </div>
+
+      <div id="links-grid" class="links__grid"></div>
+      <p id="links-empty" class="todo__empty">No links yet. Add one above!</p>
+    </section>
+
+  </main>
+
+  <!-- ===== MODALS ===== -->
+
+  <!-- Name modal -->
+  <div id="name-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="name-modal-title">
+    <div class="modal__box">
+      <h3 id="name-modal-title" class="modal__title">What's your name?</h3>
+      <input
+        type="text"
+        id="name-input"
+        class="input"
+        placeholder="Enter your name"
+        maxlength="40"
+        aria-label="Your name"
+      />
+      <div class="modal__actions">
+        <button id="name-save" class="btn btn--primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit task modal -->
+  <div id="edit-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title">
+    <div class="modal__box">
+      <h3 id="edit-modal-title" class="modal__title">Edit Task</h3>
+      <input
+        type="text"
+        id="edit-input"
+        class="input"
+        maxlength="120"
+        aria-label="Edit task text"
+      />
+      <div class="modal__actions">
+        <button id="edit-save" class="btn btn--primary">Save</button>
+        <button id="edit-cancel" class="btn btn--ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
